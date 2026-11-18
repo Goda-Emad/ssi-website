@@ -13,20 +13,10 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; scroll-padding-top: 70px; }
   :root {
-    --navy: #173142;
-    --bg: #08141C;
-    --bg2: #0B1C27;
-    --card: #0F2634;
-    --card2: #13303F;
-    --accent: #8CC0E0;
-    --accent-light: #CFE6F5;
-    --accent-dark: #3E6F8F;
-    --text: #EAF2F7;
-    --muted: #9DB4C3;
-    --dim: #6F8C9E;
-    --border: rgba(140,192,224,0.16);
-    --radius: 16px;
-    --radius-sm: 10px;
+    --navy: #173142; --bg: #08141C; --bg2: #0B1C27; --card: #0F2634; --card2: #13303F;
+    --accent: #8CC0E0; --accent-light: #CFE6F5; --accent-dark: #3E6F8F;
+    --text: #EAF2F7; --muted: #9DB4C3; --dim: #6F8C9E; --border: rgba(140,192,224,0.16);
+    --radius: 16px; --radius-sm: 10px;
   }
   body { font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
   ::-webkit-scrollbar { width: 6px; }
@@ -144,7 +134,6 @@
   .reasons { list-style: none; width: 100%; max-width: 340px; display: grid; gap: 10px; }
   .reasons li { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 10px 14px; font-size: .85rem; color: var(--muted); }
   .xai-cap { font-size: .75rem; color: var(--dim); text-align: center; }
-
 
   /* SCREENSHOTS */
   .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -585,20 +574,22 @@
     <div class="team-grid">
       <div class="card team-card lead-card fade-in d1">
         <!-- Put your photo at assets/photo.jpg -->
-        <div class="avatar" id="avatar"><img src="assets/photo.jpg" alt="Goda Emad" onerror="this.remove();document.getElementById('avatar').textContent='GE'"></div>
+        <div class="avatar"><img src="assets/photo.jpg" alt="Goda Emad" onerror="this.parentNode.textContent='GE'"></div>
         <div class="card-title">Goda Emad</div>
         <div class="team-role">Team Lead</div>
         <div class="card-text">Project lead, architecture, backend, AI integration and delivery.</div>
         <div class="team-links"><a href="https://www.linkedin.com/in/goda-emad" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:goda.emade2001@gmail.com">Email</a></div>
       </div>
       <div class="card team-card fade-in d2">
-        <div class="avatar">FA</div>
+        <!-- Put the photo at assets/fatma.jpg -->
+        <div class="avatar"><img src="assets/fatma.jpg" alt="Fatma Abdel Fattah" onerror="this.parentNode.textContent='FA'"></div>
         <div class="card-title">Fatma Abdel Fattah</div>
         <div class="team-role">Team Member</div>
         <div class="card-text">Product, interface and quality.</div>
       </div>
       <div class="card team-card fade-in d3">
-        <div class="avatar">MH</div>
+        <!-- Put the photo at assets/mahmoud.jpg -->
+        <div class="avatar"><img src="assets/mahmoud.jpg" alt="Mahmoud Hesham" onerror="this.parentNode.textContent='MH'"></div>
         <div class="card-title">Mahmoud Hesham</div>
         <div class="team-role">Team Member</div>
         <div class="card-text">Data, testing and documentation.</div>
@@ -608,8 +599,32 @@
   </div>
 </section>
 
+<!-- SUPERVISION -->
+<section id="supervision" class="alt">
+  <div class="wrap">
+    <div class="text-center fade-in">
+      <div class="section-label">Supervision</div>
+      <h2 class="section-title">Project completed under the supervision of</h2>
+    </div>
+    <div class="sup-grid">
+      <div class="card team-card sup-card lead-card fade-in d1">
+        <!-- Put the photo at assets/supervisor-nevine.jpg -->
+        <div class="avatar"><img src="assets/supervisor-nevine.jpg" alt="Dr. Nevine Makram Labib" onerror="this.parentNode.textContent='NL'"></div>
+        <div class="card-title">Dr. Nevine Makram Labib</div>
+        <div class="team-role">AI expert in Egypt</div>
+      </div>
+      <div class="card team-card sup-card lead-card fade-in d2">
+        <!-- Put the photo at assets/supervisor-badawy.jpg -->
+        <div class="avatar"><img src="assets/supervisor-badawy.jpg" alt="Dr. Mohamed Badawy" onerror="this.parentNode.textContent='MB'"></div>
+        <div class="card-title">Dr. Mohamed Badawy</div>
+        <div class="team-role">Project Supervisor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- NEXT -->
-<section id="next" class="alt">
+<section id="next">
   <div class="wrap text-center">
     <div class="fade-in">
       <div class="section-label">Decision</div>
@@ -644,16 +659,10 @@
 
 <script>
   function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
-
-  // Fade-in on scroll
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} }); }, {threshold:.12});
   document.querySelectorAll('.fade-in').forEach(function(el){ io.observe(el); });
-
-  // Progress bars
   var bo = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.style.width = e.target.dataset.w + '%'; bo.unobserve(e.target);} }); }, {threshold:.3});
   document.querySelectorAll('.bar-fill').forEach(function(el){ bo.observe(el); });
-
-  // Counters
   var co = new IntersectionObserver(function(es){ es.forEach(function(e){
     if(!e.isIntersecting) return; co.unobserve(e.target);
     var el=e.target, target=+el.dataset.target, t0=null, dur=1800;
@@ -661,19 +670,159 @@
     requestAnimationFrame(step);
   }); }, {threshold:.5});
   document.querySelectorAll('.stat-num[data-target]').forEach(function(el){ co.observe(el); });
-
-  // Rings
   function ring(ringEl, scoreEl, pct, circ, suffix, max){
     var cur=0, inc=pct/60;
-    function up(){ cur=Math.min(cur+inc,pct); ringEl.style.strokeDashoffset = circ*(1-cur/(max||100)); scoreEl.textContent = (Math.round(cur*10)/10).toString().replace(/^(\d+)$/, '$1') + suffix; if(cur<pct) requestAnimationFrame(up); }
+    function up(){ cur=Math.min(cur+inc,pct); ringEl.style.strokeDashoffset = circ*(1-cur/(max||100)); scoreEl.textContent = (Math.round(cur*10)/10).toString() + suffix; if(cur<pct) requestAnimationFrame(up); }
     setTimeout(up, 500);
   }
   var hr=document.getElementById('heroRing'); if(hr) ring(hr, document.getElementById('heroScore'), 93.8, 502.65, '%');
   var rr=document.getElementById('riskRing');
   if(rr){ var ro=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ ring(rr, document.getElementById('riskScore'), 78, 590.6, ''); ro.unobserve(e.target);} }); }, {threshold:.4}); ro.observe(rr); }
-
-  // Navbar background on scroll
   window.addEventListener('scroll', function(){ document.getElementById('navbar').style.background = window.scrollY>60 ? 'rgba(5,13,19,.95)' : 'rgba(8,20,28,.75)'; });
+</script>
+<script>
+/* SSI extras: dark/light theme, Arabic/English (RTL), supervision section, photo slots */
+(function () {
+  var P = [
+["About","عن المشروع"],["Solution","الحل"],["Screenshots","لقطات الشاشة"],["How it works","كيف يعمل"],["AI Model","نموذج الذكاء الاصطناعي"],["Roadmap","خطة التنفيذ"],["Team","الفريق"],["Next steps","الخطوات التالية"],["Supervision","الإشراف"],
+["Sadat Academy for Management Sciences · November 2026","أكاديمية السادات للعلوم الإدارية · نوفمبر 2026"],["The","نظام"],["Early-Warning","الإنذار المبكر"],["System for Student Success","لنجاح الطلاب"],
+["Smart Student Integrated (SSI)","نظام الطالب الذكي المتكامل (SSI)"],["connects students, advisors and administration on one source of truth, and predicts academic risk weeks before grades are published.","يربط الطلاب والمرشدين والإدارة في مصدر واحد للحقيقة، ويتنبأ بالخطر الأكاديمي قبل نشر الدرجات بأسابيع."],
+["Explore the solution →","استكشف الحل ←"],["Meet the team","تعرف على الفريق"],["Model accuracy","دقة النموذج"],["Students","طالب"],["Signals","مؤشر"],["Endpoints","نقطة API"],
+["The Challenge","التحدي"],["Academic failure is discovered too late","الفشل الأكاديمي يُكتشف بعد فوات الأوان"],["Three numbers taken from the academy database itself.","ثلاثة أرقام مأخوذة من قاعدة بيانات الأكاديمية نفسها."],
+["of students are at risk (1,497 students)","من الطلاب معرضون للخطر (1,497 طالب)"],["students at high risk who need action this term","طالب شديد الخطورة يحتاجون إلى تدخل هذا الفصل"],["average attendance, close to the 75% threshold","متوسط الحضور، قريب من حد 75%"],
+["Failure shows up after the window closes","الفشل يظهر بعد إغلاق نافذة التدخل"],["Problems become visible only when grades are published, when it is already too late to intervene.","لا تظهر المشكلات إلا عند نشر الدرجات، حيث يكون الأوان قد فات للتدخل."],["Late discovery → lost students","اكتشاف متأخر ← طلاب مفقودون"],
+["No tool for the advisor","لا توجد أداة للمرشد"],["An advisor owns hundreds of students with nothing that answers: who do I call today, and why?","يتابع المرشد مئات الطلاب دون أي أداة تجيب: من أتصل به اليوم ولماذا؟"],["No priority list → manual search","لا قائمة أولويات ← بحث يدوي"],
+["Scattered data, undocumented action","بيانات مشتتة وإجراءات غير موثقة"],["Records are split across spreadsheets, attendance logs and the grading system, and interventions happen verbally with no record.","السجلات موزعة بين جداول البيانات وسجلات الحضور ونظام الدرجات، والتدخلات تتم شفهياً دون توثيق."],["No record → nothing to measure","لا توثيق ← لا شيء يمكن قياسه"],
+["The Platform","المنصة"],["Four pillars that act as one loop","أربعة أعمدة تعمل كدورة واحدة"],["Not a dashboard. A cycle: predict, advise, intervene, follow up.","ليست لوحة معلومات، بل دورة: تنبؤ، إرشاد، تدخل، متابعة."],
+["Smart ID","الهوية الذكية"],["Digital student card with a QR code, plus ID-card photo login (OCR). No password needed.","بطاقة طالب رقمية برمز QR، مع تسجيل الدخول بتصوير البطاقة (OCR). دون كلمة مرور."],
+["Academic Record","السجل الأكاديمي"],["GPA, failed courses, semester trend, study plan and credits remaining to graduation.","المعدل التراكمي، المواد الراسبة، اتجاه الفصول، الخطة الدراسية والساعات المتبقية للتخرج."],
+["Smart Attendance","الحضور الذكي"],["Per-session attendance, per-course rate, and an automatic alert below 75%.","حضور كل محاضرة، ونسبة كل مادة، وتنبيه تلقائي عند أقل من 75%."],
+["AI Early Warning","الإنذار المبكر بالذكاء الاصطناعي"],["A machine-learning model that classifies risk and explains what drives it.","نموذج تعلم آلي يصنّف الخطر ويشرح أسبابه."],
+["🧠 AI ENGINE — Random Forest · 26 features · Groq assistant","🧠 محرك الذكاء الاصطناعي — Random Forest · 26 مؤشراً · مساعد Groq"],["The core value: intervene in week one of the semester, not after results are published.","القيمة الجوهرية: التدخل في الأسبوع الأول من الفصل، لا بعد إعلان النتائج."],
+["Capabilities","القدرات"],["Six features, each for a real role","ست مزايا، كل منها لدور حقيقي"],["Every capability answers a real need of a student, an advisor or the administration.","كل قدرة تلبي حاجة حقيقية للطالب أو المرشد أو الإدارة."],
+["Early warning at 93.8%","إنذار مبكر بدقة 93.8%"],["Risk classification with the reasons behind it, refreshed automatically every 6 hours.","تصنيف الخطر مع أسبابه، ويتحدث تلقائياً كل 6 ساعات."],["ML · Auto refresh","تعلم آلي · تحديث تلقائي"],
+["Smart ID, three ways in","هوية ذكية بثلاث طرق دخول"],["QR card, QR scan login, and ID-card photo login through OCR.","بطاقة QR، وتسجيل الدخول بمسح QR، وبتصوير البطاقة عبر OCR."],
+["Human-to-human messaging","مراسلة إنسانية مباشرة"],["WhatsApp-style threads between student and advisor, and advisor and admin, with attachments.","محادثات بأسلوب واتساب بين الطالب والمرشد، وبين المرشد والإدارة، مع المرفقات."],["Messaging","المراسلة"],
+["AI academic assistant","المساعد الأكاديمي الذكي"],["Powered by Groq. Answers only from the student's real records and never invents numbers.","يعمل بواسطة Groq. يجيب من سجلات الطالب الحقيقية فقط ولا يختلق أرقاماً."],["LLM · Grounded","نموذج لغوي · قائم على البيانات"],
+["Multi-channel alerts","تنبيهات متعددة القنوات"],["Instant in-app notifications, plus Gmail for high-priority cases.","إشعارات فورية داخل التطبيق، وGmail للحالات عالية الأولوية."],["In-app · Gmail","داخل التطبيق · Gmail"],
+["Arabic and English","العربية والإنجليزية"],["Full RTL and LTR support for every screen, built in rather than translated later.","دعم كامل للكتابة من اليمين لليسار والعكس في كل الشاشات، مدمج منذ البداية."],
+["Live System","النظام الحي"],["See SSI running","شاهد SSI وهو يعمل"],["Screenshots taken from the working system, not mockups.","لقطات من النظام الفعلي، وليست تصاميم تجريبية."],["Screenshot 1","لقطة الشاشة 1"],["Screenshot 2","لقطة الشاشة 2"],
+["From record to intervention in five steps","من السجل إلى التدخل في خمس خطوات"],["Fully automated and explainable at every step.","آلي بالكامل وقابل للتفسير في كل خطوة."],
+["Data","البيانات"],["Grades, attendance, engagement, warnings","الدرجات، الحضور، التفاعل، الإنذارات"],["Model","النموذج"],["Random Forest on 26 features","Random Forest على 26 مؤشراً"],["Risk score","درجة الخطر"],["0 to 100, with reasons","من 0 إلى 100 مع الأسباب"],
+["Advisor","المرشد"],["Ranked queue and recommendations","قائمة مرتبة وتوصيات"],["Student","الطالب"],["Notification, message, action plan","إشعار، رسالة، خطة عمل"],
+["System architecture","هيكل النظام"],["Three roles on top, one API in the middle, and the data, AI and messaging services behind it.","ثلاثة أدوار في الأعلى، وواجهة API واحدة في المنتصف، وخلفها خدمات البيانات والذكاء الاصطناعي والمراسلة."],
+["own profile, risk reasons","ملفه الشخصي وأسباب الخطر"],["daily queue, student files","قائمة اليوم وملفات الطلاب"],["KPIs, department risk","المؤشرات وخطر الأقسام"],["Admin","الإدارة"],
+["Web app: React 18 + Vite","تطبيق الويب: React 18 + Vite"],["Recharts dashboards · full RTL and LTR (Arabic and English) · served through Nginx","لوحات Recharts · دعم كامل RTL وLTR (عربي وإنجليزي) · عبر Nginx"],["REST API (69 endpoints)","REST API (69 نقطة)"],
+["API layer: FastAPI (Python)","طبقة API: FastAPI (Python)"],["JWT authentication · role-based access control at the API · rate limiting (SlowAPI)","مصادقة JWT · صلاحيات الأدوار على مستوى API · تحديد المعدل (SlowAPI)"],["student data isolation · upload checks · audit log","عزل بيانات الطلاب · فحص الرفع · سجل التدقيق"],
+["Database","قاعدة البيانات"],["Risk model","نموذج الخطر"],["26 features, 6-hour refresh","26 مؤشراً، تحديث كل 6 ساعات"],["AI assistant","المساعد الذكي"],["answers from real records","يجيب من السجلات الفعلية"],["Alerts","التنبيهات"],["in-app notifications","إشعارات داخل التطبيق"],["Gmail for high priority","Gmail للأولوية العالية"],
+["Own profile, risk reasons, recommendations and a direct line to the advisor.","ملفه الشخصي وأسباب الخطر والتوصيات وخط مباشر مع المرشد."],["Daily priority queue, full student file, notes and documented interventions.","قائمة أولويات يومية، وملف الطالب الكامل، وملاحظات وتدخلات موثقة."],["Academy KPIs, risk distribution by department and advisor performance.","مؤشرات الأكاديمية، وتوزيع الخطر حسب القسم، وأداء المرشدين."],
+["Trained, measured, and not a black box","مدرَّب ومقاس وليس صندوقاً أسود"],["Evaluated on 5,000 records with 26 features. Figures are taken from the model file.","تم التقييم على 5,000 سجل بـ26 مؤشراً. الأرقام مأخوذة من ملف النموذج."],
+["Accuracy","الدقة"],["Precision","الضبط"],["Recall","الاسترجاع"],["What drives the decision","ما الذي يحرك القرار"],["GPA","المعدل التراكمي"],["Failed courses","المواد الراسبة"],["Attendance","الحضور"],["Prior warnings","الإنذارات السابقة"],["Library visits","زيارات المكتبة"],
+["Risk score (example)","درجة الخطر (مثال)"],["Your attendance in Accounting is 60%","حضورك في مادة المحاسبة 60%"],["Your GPA of 1.75 is below the probation line","معدلك التراكمي 1.75 أقل من حد الإنذار الأكاديمي"],["Every score ships with its reasons. The advisor keeps the decision.","كل درجة تأتي مع أسبابها، والقرار يبقى للمرشد."],
+["Security and Privacy","الأمان والخصوصية"],["Student data is a trust","بيانات الطلاب أمانة"],["Six controls implemented in the code, not promises on a slide.","ست ضوابط منفذة في الكود، وليست وعوداً على شريحة."],
+["JWT authentication","مصادقة JWT"],["Every request is protected by a signed token with automatic expiry.","كل طلب محمي برمز موقّع ينتهي تلقائياً."],["API-level RBAC","صلاحيات الأدوار على مستوى API"],["Student, advisor and admin roles are verified on the server, never in the browser.","تُتحقق أدوار الطالب والمرشد والإدارة على الخادم، وليس في المتصفح."],
+["Student data isolation","عزل بيانات الطالب"],["A student cannot reach another student's record, whatever the URL says.","لا يمكن لطالب الوصول إلى سجل طالب آخر، أياً كان الرابط."],["Secret hygiene","حماية الأسرار"],["bcrypt passwords. API keys are never logged and never returned.","كلمات المرور بـ bcrypt. مفاتيح API لا تُسجَّل ولا تُعاد أبداً."],
+["Audit log","سجل التدقيق"],["Every sensitive action is recorded with actor, IP and time (129 so far).","كل إجراء حساس يُسجَّل بالمنفذ وعنوان IP والوقت (129 حتى الآن)."],["Upload and abuse guard","حماية الرفع وإساءة الاستخدام"],["File type, size and access checks, plus rate limiting per user.","فحص نوع الملف وحجمه والصلاحيات، مع تحديد المعدل لكل مستخدم."],
+["Under the Hood","تحت الغطاء"],["Open-source and deployable inside the academy","مفتوح المصدر ويمكن تشغيله داخل الأكاديمية"],["One server or Docker, with no per-student licence.","خادم واحد أو Docker، دون ترخيص لكل طالب."],
+["⚙️ Backend","⚙️ الخلفية"],["🗄️ Database","🗄️ قاعدة البيانات"],["🎨 Frontend","🎨 الواجهة"],["🧠 AI / ML","🧠 الذكاء الاصطناعي / التعلم الآلي"],["🚀 Deployment","🚀 النشر"],["🪶 SQLite (dev)","🪶 SQLite (تطوير)"],["🐘 PostgreSQL (prod)","🐘 PostgreSQL (إنتاج)"],["▶️ One-click launcher","▶️ مشغّل بضغطة واحدة"],
+["By the Numbers","بالأرقام"],["It is running today","يعمل اليوم"],["Students in the database","طالب في قاعدة البيانات"],["Indexed attendance records","سجل حضور مفهرس"],["Courses across 28 departments","مادة في 28 قسماً"],["Documented API endpoints","نقطة API موثقة"],["Screens","شاشة"],["Technical documents","وثائق تقنية"],
+["Four phases, each independent and low-risk","أربع مراحل، كل منها مستقلة ومنخفضة المخاطر"],["Start small, prove impact, then scale.","نبدأ صغيراً، نثبت الأثر، ثم نتوسع."],["PHASE 1","المرحلة 1"],["PHASE 2","المرحلة 2"],["PHASE 3","المرحلة 3"],["PHASE 4","المرحلة 4"],
+["One faculty, one semester","كلية واحدة، فصل دراسي واحد"],["Pilot on a single faculty","تجربة على كلية واحدة"],["Measure meetings and closed cases","قياس الاجتماعات والحالات المغلقة"],["Measure GPA movement at term end","قياس تغير المعدل في نهاية الفصل"],
+["Integration","التكامل"],["Connect the student information system","ربط نظام معلومات الطلاب"],["Connect attendance and the LMS","ربط الحضور ونظام LMS"],["Single sign-on with the academy IdP","تسجيل دخول موحد مع مزود هوية الأكاديمية"],
+["Mobile","الموبايل"],["React Native application","تطبيق React Native"],["Push notifications","الإشعارات الفورية"],["Advisor appointment booking","حجز مواعيد المرشد"],["Predictive analytics","التحليلات التنبؤية"],["Course planning and forecasting","تخطيط المواد والتوقعات"],["Retrain the model on real cohorts","إعادة تدريب النموذج على دفعات حقيقية"],["Roll out to every department","التعميم على كل الأقسام"],
+["The Builders","صُنّاع المشروع"],["Meet the Team","تعرف على الفريق"],["Three people, one delivery. Every layer of SSI was designed, built and tested in-house.","ثلاثة أشخاص، مشروع واحد. كل طبقة في SSI صُمّمت وبُنيت واختُبرت داخلياً."],
+["Team Lead","قائد الفريق"],["Team Member","عضو الفريق"],["Project lead, architecture, backend, AI integration and delivery.","قيادة المشروع، والمعمارية، والخلفية، وتكامل الذكاء الاصطناعي، والتسليم."],["Product, interface and quality.","المنتج والواجهة والجودة."],["Data, testing and documentation.","البيانات والاختبار والتوثيق."],["Email","البريد"],
+["Scope delivered:","النطاق المُنجز:"],["17 screens","17 شاشة"],["69 API endpoints","69 نقطة API"],["1 ML model","نموذج تعلم آلي واحد"],["8 technical documents","8 وثائق تقنية"],
+["Project completed under the supervision of","مشروع تم تحت إشراف"],["Dr. Nevine Makram Labib","د. نيفين مكرم لبيب"],["AI expert in Egypt","خبيرة الذكاء الاصطناعي في مصر"],["Dr. Mohamed Badawy","د. محمد بدوي"],["Project Supervisor","مشرف على المشروع"],
+["Decision","القرار"],["SSI is not a piece of software. It is a strategic decision.","SSI ليس مجرد برنامج، بل قرار استراتيجي."],["To know the student before losing them. The data exists, the model is ready, the cost is limited and the impact is measurable.","أن نعرف الطالب قبل أن نفقده. البيانات موجودة، والنموذج جاهز، والتكلفة محدودة، والأثر قابل للقياس."],
+["STEP 1","الخطوة 1"],["STEP 2","الخطوة 2"],["STEP 3","الخطوة 3"],["Approval in principle","الموافقة المبدئية"],["Adopt SSI as the academy's official early-warning tool.","اعتماد SSI كأداة الإنذار المبكر الرسمية للأكاديمية."],["Live demo","عرض مباشر"],["A working session with advisors within two weeks.","جلسة عمل مع المرشدين خلال أسبوعين."],["Pilot phase","مرحلة تجريبية"],["One faculty for one semester, then a decision on results.","كلية واحدة لفصل دراسي، ثم قرار بناءً على النتائج."],
+["Smart Student Integrated · AI-powered early warning and student management","نظام الطالب الذكي المتكامل · إنذار مبكر وإدارة طلابية بالذكاء الاصطناعي"],["↑ Back to top","↑ العودة للأعلى"],["Prepared for","أُعدّ لصالح"],["Sadat Academy for Management Sciences","أكاديمية السادات للعلوم الإدارية"],["· November 2026","· نوفمبر 2026"]
+  ];
+  var D = {};
+  P.forEach(function (p) { D[p[0].toLowerCase()] = p[1]; });
+
+  var css = '\
+html[data-theme="light"]{--bg:#F3F7FA;--bg2:#E6EEF4;--card:#FFFFFF;--card2:#EEF4F8;--accent:#2B6489;--accent-light:#173142;--accent-dark:#3E6F8F;--text:#10222E;--muted:#455F70;--dim:#6A8596;--border:rgba(23,49,66,.15)}\
+html[data-theme="light"] nav{background:rgba(243,247,250,.88)!important}\
+html[data-theme="light"] .nav-links .nav-cta,html[data-theme="light"] .btn-primary{background:#173142;color:#fff;box-shadow:none}\
+html[data-theme="light"] .nav-links .nav-cta:hover,html[data-theme="light"] .btn-primary:hover{background:#2B6489;color:#fff}\
+html[data-theme="light"] .mobile-menu{background:rgba(243,247,250,.98)}\
+html[data-theme="light"] .hero-stat{background:rgba(255,255,255,.9)}\
+html[data-theme="light"] .lead-card{background:linear-gradient(135deg,rgba(62,111,143,.16),#fff)}\
+html[data-theme="light"] .engine{color:#173142}\
+html[data-theme="light"] footer{background:#DCE7EF}\
+html[data-theme="light"] .hero-grid{opacity:.6}\
+html[data-theme="light"] .highlight{background:linear-gradient(135deg,#2B6489,#173142);-webkit-background-clip:text;background-clip:text}\
+.ssi-ctl{display:flex;gap:8px;align-items:center}\
+.ssi-ctl button{background:transparent;border:1px solid var(--border);color:var(--accent);font:600 .78rem Inter,Cairo,sans-serif;padding:6px 12px;border-radius:8px;cursor:pointer;min-width:38px}\
+.ssi-ctl button:hover{border-color:var(--accent);background:rgba(140,192,224,.1)}\
+.sup-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px;margin:0 auto}\
+.sup-card{text-align:center}\
+.sup-card .avatar{width:132px;height:132px;font-size:2.2rem;margin-bottom:20px}\
+@media(max-width:700px){.sup-grid{grid-template-columns:1fr}}\
+html[dir=rtl] body,html[dir=rtl] button{font-family:Cairo,"Segoe UI",Tahoma,sans-serif}\
+html[dir=rtl] .hero-title,html[dir=rtl] .section-title,html[dir=rtl] .section-label,html[dir=rtl] .tag,html[dir=rtl] .ring-label,html[dir=rtl] .hero-stat span,html[dir=rtl] .tech-cat,html[dir=rtl] .phase-n{letter-spacing:0;text-transform:none}\
+html[dir=rtl] .hero-title{line-height:1.3}\
+html[dir=rtl] .strip-item{border-right:0;border-left:1px solid var(--border)}\
+html[dir=rtl] .strip-item:last-child{border-left:0}\
+html[dir=rtl] .hero-badge{padding:6px 8px 6px 16px}\
+html[dir=rtl] .phase-list li{padding-left:0;padding-right:16px}\
+html[dir=rtl] .phase-list li::before{left:auto;right:0;content:"◂"}\
+html[dir=rtl] .reasons li{border-left:1px solid var(--border);border-right:3px solid var(--accent)}\
+html[dir=rtl] .mobile-close{right:auto;left:24px}\
+html[dir=rtl] .cta-steps{text-align:right}\
+html[dir=rtl] .diagram svg{direction:ltr}\
+html[dir=rtl] .flow li{padding:20px 34px 20px 18px;margin-right:0;margin-left:-6px}\
+html[dir=rtl] .flow li:first-child{padding-right:20px}\
+@media(min-width:961px){html[dir=rtl] .flow li{clip-path:polygon(100% 0,18px 0,0 50%,18px 100%,100% 100%,calc(100% - 18px) 50%)}html[dir=rtl] .flow li:first-child{clip-path:polygon(100% 0,18px 0,0 50%,18px 100%,100% 100%)}}\
+@media(max-width:960px){html[dir=rtl] .flow li,html[dir=rtl] .flow li:first-child{margin:0 0 6px;padding:16px 20px}}';
+  var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+  var fl = document.createElement('link'); fl.rel = 'stylesheet';
+  fl.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap'; document.head.appendChild(fl);
+
+  var nl = document.querySelector('.nav-links'), nx = nl && nl.querySelector('.nav-cta');
+  if (nx) nx.parentNode.insertAdjacentHTML('beforebegin', '<li><a href="#supervision">Supervision</a></li>');
+  var mm = document.getElementById('mobileMenu'), mx = mm && mm.querySelector('a[href="#next"]');
+  if (mx) mx.insertAdjacentHTML('beforebegin', '<a href="#supervision" onclick="toggleMenu()">Supervision</a>');
+
+  var nav = document.getElementById('navbar'), hb = nav.querySelector('.hamburger');
+  var ctl = document.createElement('div'); ctl.className = 'ssi-ctl';
+  ctl.innerHTML = '<button id="langBtn" type="button"></button><button id="themeBtn" type="button"></button>';
+  nav.insertBefore(ctl, hb);
+
+  var lang = 'en', theme = 'dark';
+  try { lang = localStorage.getItem('ssi-lang') || 'en'; theme = localStorage.getItem('ssi-theme') || 'dark'; } catch (e) {}
+  var enTitle = document.title, enDesc = (document.querySelector('meta[name=description]') || {}).content;
+
+  function setTheme(t) {
+    theme = t; document.documentElement.setAttribute('data-theme', t);
+    var b = document.getElementById('themeBtn'); b.textContent = t === 'dark' ? '☀' : '☾';
+    b.setAttribute('aria-label', lang === 'ar' ? (t === 'dark' ? 'الوضع الفاتح' : 'الوضع الداكن') : (t === 'dark' ? 'Light mode' : 'Dark mode'));
+    try { localStorage.setItem('ssi-theme', t); } catch (e) {}
+  }
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null), n;
+    while ((n = w.nextNode())) {
+      var tag = n.parentNode.nodeName; if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') continue;
+      if (l === 'ar') {
+        var src = n.__en || n.nodeValue, t = src.trim(); if (!t) continue;
+        var m = D[t.replace(/\s+/g, ' ').toLowerCase()];
+        if (m) { n.__en = src; n.nodeValue = src.replace(t, m); }
+      } else if (n.__en) { n.nodeValue = n.__en; n.__en = null; }
+    }
+    document.title = l === 'ar' ? 'SSI — الطالب الذكي المتكامل | أكاديمية السادات للعلوم الإدارية' : enTitle;
+    var md = document.querySelector('meta[name=description]'); if (md && enDesc) md.content = l === 'ar' ? 'SSI نظام إنذار مبكر وإدارة طلابية بالذكاء الاصطناعي لأكاديمية السادات للعلوم الإدارية.' : enDesc;
+    document.getElementById('langBtn').textContent = l === 'ar' ? 'EN' : 'عربي';
+    setTheme(theme);
+    try { localStorage.setItem('ssi-lang', l); } catch (e) {}
+  }
+  document.getElementById('langBtn').onclick = function () { setLang(lang === 'ar' ? 'en' : 'ar'); };
+  document.getElementById('themeBtn').onclick = function () { setTheme(theme === 'dark' ? 'light' : 'dark'); };
+  setLang(lang);
+})();
+
 </script>
 </body>
 </html>
